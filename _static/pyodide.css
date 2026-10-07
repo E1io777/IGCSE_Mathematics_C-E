@@ -1,0 +1,549 @@
+/* =============================================================================
+   pyodide.css — Styles for interactive Pyodide cells in MyST JupyterBook v2
+   =============================================================================
+   Theme switching: JupyterBook v2 (MyST / book-theme) toggles the class
+   `light` or `dark` on `<html>`.  ALL dark-mode overrides therefore use
+   `html.dark` selectors.
+
+   IMPORTANT: We intentionally do NOT use a blanket
+   `@media (prefers-color-scheme: dark)` block, because it would conflict
+   when the user explicitly picks "Light" in the book's theme toggle while
+   their OS is set to dark mode.  The only media-query fallback we keep is
+   scoped to `html:not(.light):not(.dark)` so it only fires before JS sets
+   a class (i.e. the brief FOUC window).
+   ============================================================================= */
+
+/* ── Tailwind Preflight override ──────────────────────────────────────────── */
+.pyodide-wrapper svg {
+  display: inline !important;
+  vertical-align: middle !important;
+}
+
+/* ── Wrapper ──────────────────────────────────────────────────────────────── */
+.pyodide-wrapper {
+  border: 1px solid var(--color-border, #d0d7de);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 1.25rem 0;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace,
+    SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  background: var(--color-background-primary, #fff);
+  color: var(--color-foreground-primary, #1f2328);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  grid-column: body;
+}
+
+/* ── Header bar ───────────────────────────────────────────────────────────── */
+.pyodide-header {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.75rem;
+  background: var(--color-background-secondary, #f6f8fa);
+  border-bottom: 1px solid var(--color-border, #d0d7de);
+  gap: 0.5rem;
+}
+
+.pyodide-lang-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-foreground-muted, #57606a);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.pyodide-controls {
+  display: flex !important;
+  gap: 0.4rem;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.pyodide-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, opacity 0.15s;
+  line-height: 1;
+}
+
+.pyodide-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pyodide-btn-run {
+  background: #2da44e;
+  color: #fff;
+  border-color: rgba(31, 35, 40, 0.15);
+  font-weight: 600;
+}
+.pyodide-btn-run:hover:not(:disabled) { background: #2c974b; }
+.pyodide-btn-run:active:not(:disabled) { background: #298e46; }
+
+.pyodide-btn-clear {
+  background: var(--color-background-primary, #fff);
+  color: var(--color-foreground-primary, #1f2328);
+  border-color: var(--color-border, #d0d7de);
+}
+.pyodide-btn-clear:hover:not(:disabled) {
+  background: var(--color-background-secondary, #f3f4f6);
+}
+
+.pyodide-btn-runall {
+  background: #0969da;
+  color: #fff;
+  border-color: rgba(31, 35, 40, 0.15);
+  font-weight: 600;
+}
+.pyodide-btn-runall:hover:not(:disabled) { background: #0860c7; }
+.pyodide-btn-runall:active:not(:disabled) { background: #0757b5; }
+
+.pyodide-btn-restart {
+  background: var(--color-background-primary, #fff);
+  color: #cf222e;
+  border-color: var(--color-border, #d0d7de);
+  font-weight: 600;
+}
+.pyodide-btn-restart:hover:not(:disabled) {
+  background: #ffebe9;
+  border-color: #cf222e;
+}
+
+/* ── CodeMirror editor container ──────────────────────────────────────────── */
+.pyodide-editor-container {
+  position: relative;
+  min-height: 80px;
+  max-height: 350px;
+  overflow: auto;
+  resize: vertical;
+}
+
+.pyodide-editor-container .CodeMirror {
+  height: auto;
+  min-height: 80px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  border: none;
+  border-radius: 0;
+}
+
+.pyodide-editor-container .CodeMirror-scroll {
+  min-height: 80px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   CodeMirror colour theme — LIGHT (default)
+   ══════════════════════════════════════════════════════════════════════════════ */
+.CodeMirror.cm-s-pyodide-theme {
+  background: var(--color-background-primary, #fafbfc);
+  color: #24292f;
+}
+
+.cm-s-pyodide-theme .CodeMirror-gutters {
+  background: var(--color-background-secondary, #f0f1f3);
+  border-right: 1px solid var(--color-border, #d0d7de);
+}
+
+.cm-s-pyodide-theme .CodeMirror-linenumber { color: #8c959f; }
+.cm-s-pyodide-theme .CodeMirror-cursor     { border-left: 2px solid #0969da; }
+.cm-s-pyodide-theme .CodeMirror-selected   { background: #b3d9ff; }
+
+/* Syntax — light */
+.cm-s-pyodide-theme .cm-keyword        { color: #cf222e; font-weight: bold; }
+.cm-s-pyodide-theme .cm-def            { color: #0550ae; }
+.cm-s-pyodide-theme .cm-variable       { color: #24292f; }
+.cm-s-pyodide-theme .cm-variable-2     { color: #0550ae; }
+.cm-s-pyodide-theme .cm-string         { color: #0a3069; }
+.cm-s-pyodide-theme .cm-string-2       { color: #0a3069; }
+.cm-s-pyodide-theme .cm-number         { color: #0550ae; }
+.cm-s-pyodide-theme .cm-comment        { color: #6e7781; font-style: italic; }
+.cm-s-pyodide-theme .cm-operator       { color: #cf222e; }
+.cm-s-pyodide-theme .cm-builtin        { color: #8250df; }
+.cm-s-pyodide-theme .cm-atom           { color: #0550ae; }
+.cm-s-pyodide-theme .cm-meta           { color: #6e7781; }
+.cm-s-pyodide-theme .cm-bracket        { color: #24292f; }
+.cm-s-pyodide-theme .cm-property       { color: #0550ae; }
+.cm-s-pyodide-theme .cm-tag            { color: #116329; }
+.cm-s-pyodide-theme .cm-attribute      { color: #0550ae; }
+.cm-s-pyodide-theme .cm-matchhighlight { background: #fff0a6; }
+.cm-s-pyodide-theme .CodeMirror-matchingbracket { color: #24292f; background: #dafbe1; }
+
+/* ── Fallback textarea (when CodeMirror unavailable) ──────────────────────── */
+.pyodide-fallback-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  border: none;
+  background: var(--color-background-primary, #fafbfc);
+  color: var(--color-foreground-primary, #24292f);
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  min-height: 80px;
+  max-height: 350px;
+  resize: vertical;
+  outline: none;
+}
+
+/* ── Status bar ───────────────────────────────────────────────────────────── */
+.pyodide-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  background: var(--color-background-secondary, #f6f8fa);
+  border-top: 1px solid var(--color-border, #d0d7de);
+  min-height: 1.6rem;
+}
+
+.pyodide-status-text {
+  font-size: 0.78rem;
+  color: var(--color-foreground-muted, #57606a);
+}
+
+.pyodide-status-info    { color: #0550ae; }
+.pyodide-status-success { color: #1a7f37; }
+.pyodide-status-error   { color: #cf222e; }
+
+.pyodide-timing {
+  font-size: 0.75rem;
+  color: var(--color-foreground-muted, #8c959f);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Output area ──────────────────────────────────────────────────────────── */
+.pyodide-output {
+  min-height: 40px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0.6rem 0.75rem;
+  border-top: 1px solid var(--color-border, #d0d7de);
+  background: var(--color-background-primary, #fff);
+  color: var(--color-foreground-primary, #24292f);
+  resize: vertical;
+}
+
+.pyodide-output:empty {
+  display: none;
+}
+
+/* Override Tailwind prose <pre> styles that leak into the output area. */
+.pyodide-output pre {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 0.4rem !important;
+  overflow: visible !important;
+  font-size: 0.85rem !important;
+  line-height: 1.55 !important;
+  color: inherit !important;
+}
+
+.pyodide-stdout,
+.pyodide-return-value {
+  margin: 0 0 0.4rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-foreground-primary, #24292f);
+}
+
+.pyodide-stderr {
+  margin: 0 0 0.4rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: #9a4700;
+  background: #fff8c5 !important;
+  border-left: 3px solid #d4a72c;
+  padding: 0.3rem 0.5rem !important;
+  border-radius: 0 3px 3px 0 !important;
+}
+
+.pyodide-error {
+  margin: 0 0 0.4rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: #82071e;
+  background: #ffebe9 !important;
+  border-left: 3px solid #ff818266;
+  padding: 0.3rem 0.5rem !important;
+  border-radius: 0 3px 3px 0 !important;
+}
+
+.pyodide-figure {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   DARK MODE — triggered by book-theme toggling html.dark
+   Every element that uses a colour is overridden here so switching
+   light <-> dark is fully reversible.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Wrapper / layout ─────────────────────────────────────────────────────── */
+html.dark .pyodide-wrapper {
+  border-color: #30363d;
+  background: #0d1117;
+  color: #c9d1d9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .pyodide-header,
+html.dark .pyodide-status-bar {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+html.dark .pyodide-lang-badge { color: #8b949e; }
+
+/* ── Buttons — dark ───────────────────────────────────────────────────────── */
+html.dark .pyodide-btn-run {
+  background: #238636;
+  border-color: rgba(240, 246, 252, 0.1);
+}
+html.dark .pyodide-btn-run:hover:not(:disabled) { background: #2ea043; }
+html.dark .pyodide-btn-run:active:not(:disabled) { background: #238636; }
+
+html.dark .pyodide-btn-clear {
+  background: #21262d;
+  color: #c9d1d9;
+  border-color: #30363d;
+}
+html.dark .pyodide-btn-clear:hover:not(:disabled) { background: #30363d; }
+
+html.dark .pyodide-btn-runall {
+  background: #1f6feb;
+  border-color: rgba(240, 246, 252, 0.1);
+}
+html.dark .pyodide-btn-runall:hover:not(:disabled) { background: #388bfd; }
+html.dark .pyodide-btn-runall:active:not(:disabled) { background: #1f6feb; }
+
+html.dark .pyodide-btn-restart {
+  background: #21262d;
+  color: #f85149;
+  border-color: #30363d;
+}
+html.dark .pyodide-btn-restart:hover:not(:disabled) {
+  background: #3b1d1d;
+  border-color: #f85149;
+}
+
+/* ── CodeMirror — DARK ────────────────────────────────────────────────────── */
+html.dark .CodeMirror.cm-s-pyodide-theme {
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+html.dark .cm-s-pyodide-theme .CodeMirror-gutters {
+  background: #161b22;
+  border-color: #30363d;
+  color: #484f58;
+}
+
+html.dark .cm-s-pyodide-theme .CodeMirror-linenumber { color: #484f58; }
+html.dark .cm-s-pyodide-theme .CodeMirror-cursor     { border-left-color: #58a6ff; }
+html.dark .cm-s-pyodide-theme .CodeMirror-selected   { background: #1f3757; }
+
+/* Syntax — dark (GitHub-dark-inspired, all high-contrast on #0d1117) */
+html.dark .cm-s-pyodide-theme .cm-keyword        { color: #ff7b72; font-weight: bold; }
+html.dark .cm-s-pyodide-theme .cm-def            { color: #d2a8ff; }
+html.dark .cm-s-pyodide-theme .cm-variable       { color: #c9d1d9; }
+html.dark .cm-s-pyodide-theme .cm-variable-2     { color: #79c0ff; }
+html.dark .cm-s-pyodide-theme .cm-string         { color: #a5d6ff; }
+html.dark .cm-s-pyodide-theme .cm-string-2       { color: #a5d6ff; }
+html.dark .cm-s-pyodide-theme .cm-number         { color: #79c0ff; }
+html.dark .cm-s-pyodide-theme .cm-comment        { color: #8b949e; font-style: italic; }
+html.dark .cm-s-pyodide-theme .cm-operator       { color: #ff7b72; }
+html.dark .cm-s-pyodide-theme .cm-builtin        { color: #d2a8ff; }
+html.dark .cm-s-pyodide-theme .cm-atom           { color: #79c0ff; }
+html.dark .cm-s-pyodide-theme .cm-meta           { color: #8b949e; }
+html.dark .cm-s-pyodide-theme .cm-bracket        { color: #c9d1d9; }
+html.dark .cm-s-pyodide-theme .cm-property       { color: #79c0ff; }
+html.dark .cm-s-pyodide-theme .cm-tag            { color: #7ee787; }
+html.dark .cm-s-pyodide-theme .cm-attribute      { color: #79c0ff; }
+html.dark .cm-s-pyodide-theme .cm-matchhighlight { background: #3b2e00; }
+html.dark .cm-s-pyodide-theme .CodeMirror-matchingbracket { color: #c9d1d9; background: #2ea04366; }
+
+/* ── Fallback textarea — dark ─────────────────────────────────────────────── */
+html.dark .pyodide-fallback-textarea {
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+/* ── Status — dark ────────────────────────────────────────────────────────── */
+html.dark .pyodide-status-text  { color: #8b949e; }
+html.dark .pyodide-status-info  { color: #58a6ff; }
+html.dark .pyodide-status-success { color: #3fb950; }
+html.dark .pyodide-status-error { color: #f85149; }
+html.dark .pyodide-timing       { color: #8b949e; }
+
+/* ── Output — dark ────────────────────────────────────────────────────────── */
+html.dark .pyodide-output {
+  background: #0d1117;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+html.dark .pyodide-output pre { color: #c9d1d9 !important; }
+
+html.dark .pyodide-stdout,
+html.dark .pyodide-return-value { color: #c9d1d9; }
+
+html.dark .pyodide-stderr {
+  color: #e3b341;
+  background: #272115 !important;
+  border-left-color: #9e6a03;
+}
+html.dark .pyodide-error {
+  color: #ffa198;
+  background: #2d1214 !important;
+  border-left-color: #f85149;
+}
+
+/* ── Loading indicators — dark ────────────────────────────────────────────── */
+html.dark .pyodide-cell-react:not(.pyodide-wrapper) {
+  background: #161b22;
+  border-color: #30363d;
+}
+html.dark .pyodide-cell-react:not(.pyodide-wrapper)::before {
+  color: #58a6ff;
+}
+
+html.dark div.pyodide-cell:not([data-pyodide-transformed])::before {
+  background: #161b22;
+  border-color: #30363d;
+  color: #58a6ff;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   FALLBACK — OS-level dark preference (only when no explicit theme class)
+
+   This ONLY applies when <html> has neither .light nor .dark, i.e.
+   the brief window before the BlockingThemeLoader JS runs.  Once the JS
+   sets a class, these selectors no longer match, so they cannot conflict
+   with an explicit user choice.
+   ══════════════════════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  html:not(.light):not(.dark) .pyodide-wrapper {
+    border-color: #30363d;
+    background: #0d1117;
+    color: #c9d1d9;
+  }
+  html:not(.light):not(.dark) .pyodide-header,
+  html:not(.light):not(.dark) .pyodide-status-bar {
+    background: #161b22;
+    border-color: #30363d;
+  }
+  html:not(.light):not(.dark) .CodeMirror.cm-s-pyodide-theme {
+    background: #0d1117;
+    color: #c9d1d9;
+  }
+  html:not(.light):not(.dark) .cm-s-pyodide-theme .CodeMirror-gutters {
+    background: #161b22;
+    border-color: #30363d;
+    color: #484f58;
+  }
+  html:not(.light):not(.dark) .pyodide-fallback-textarea {
+    background: #0d1117;
+    color: #c9d1d9;
+  }
+  html:not(.light):not(.dark) .pyodide-output {
+    background: #0d1117;
+    border-color: #30363d;
+    color: #c9d1d9;
+  }
+  html:not(.light):not(.dark) .pyodide-stdout,
+  html:not(.light):not(.dark) .pyodide-return-value { color: #c9d1d9; }
+}
+
+
+/* ── Accessibility: focus ring ────────────────────────────────────────────── */
+.pyodide-btn:focus-visible {
+  outline: 2px solid #0969da;
+  outline-offset: 2px;
+}
+html.dark .pyodide-btn:focus-visible {
+  outline-color: #58a6ff;
+}
+
+/* ── Pre-transform: prevent FOUC ──────────────────────────────────────────── */
+div.pyodide-cell:not([data-pyodide-transformed]) {
+  position: relative;
+  grid-column: body;
+}
+
+div.pyodide-cell:not([data-pyodide-transformed]) > .myst-code,
+div.pyodide-cell:not([data-pyodide-transformed]) > div {
+  display: none !important;
+}
+
+div.pyodide-cell[data-pyodide-transformed="done"] {
+  display: none !important;
+}
+
+/* ── React component: loading state ───────────────────────────────────────── */
+.pyodide-cell-react:not(.pyodide-wrapper) {
+  position: relative;
+  min-height: 80px;
+  border: 1px solid var(--color-border, #c8d1da);
+  border-radius: 6px;
+  background: #f0f6fc;
+  grid-column: body;
+}
+
+.pyodide-cell-react:not(.pyodide-wrapper)::before {
+  content: '\25B6  Interactive Python \2014 loading editor\2026';
+  display: block;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0550ae;
+  letter-spacing: 0.02em;
+  animation: pyodide-pulse 1.5s ease-in-out infinite;
+}
+
+div.pyodide-cell:not([data-pyodide-transformed])::before {
+  content: '\25B6 Interactive Python \2014 loading editor\2026';
+  display: block;
+  padding: 0.6rem 0.75rem;
+  background: #f0f6fc;
+  border: 1px solid #c8d1da;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0550ae;
+  letter-spacing: 0.02em;
+  animation: pyodide-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pyodide-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ── Responsive: wrap controls on small screens ───────────────────────────── */
+@media (max-width: 768px) {
+  .pyodide-controls {
+    flex-wrap: wrap;
+  }
+}
