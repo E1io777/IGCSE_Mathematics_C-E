@@ -38,30 +38,30 @@ project:
   toc:
     - file: intro.md
 
-  - title: Chapter 1 — Number
-    children:
-      - title: 1.1 Arithmetic
-        file: chapter1/1-1-arithmetic.md
-      - title: 1.2 Negative Numbers
-        file: chapter1/1-2-negative-numbers.md
-      - title: 1.3 Number Facts
-        file: chapter1/1-3-number-facts.md
-      - title: 1.4 Sequences
-        file: chapter1/1-4-sequences.md
-      - title: 1.5 Approximations and Estimation
-        file: chapter1/1-5-approximations-estimation.md
-      - title: 1.6 Indices
-        file: chapter1/1-6-indices.md
-      - title: 1.7 Standard Form
-        file: chapter1/1-7-standard-form.md
-      - title: 1.8 Surds
-        file: chapter1/1-8-surds.md
-      - title: 1.9 Calculator
-        file: chapter1/1-9-calculator.md
-      - title: Revision Exercise
-        file: chapter1/revision-exercise.md
-      - title: Examination-Style Exercise
-        file: chapter1/examination-style-exercise.md
+    - title: Chapter 1 — Number
+      children:
+        - title: 1.1 Arithmetic
+          file: chapter1/1-1-arithmetic.md
+        - title: 1.2 Negative Numbers
+          file: chapter1/1-2-negative-numbers.md
+        - title: 1.3 Number Facts
+          file: chapter1/1-3-number-facts.md
+        - title: 1.4 Sequences
+          file: chapter1/1-4-sequences.md
+        - title: 1.5 Approximations and Estimation
+          file: chapter1/1-5-approximations-estimation.md
+        - title: 1.6 Indices
+          file: chapter1/1-6-indices.md
+        - title: 1.7 Standard Form
+          file: chapter1/1-7-standard-form.md
+        - title: 1.8 Surds
+          file: chapter1/1-8-surds.md
+        - title: 1.9 Calculator
+          file: chapter1/1-9-calculator.md
+        - title: Revision Exercise
+          file: chapter1/revision-exercise.md
+        - title: Examination-Style Exercise
+          file: chapter1/examination-style-exercise.md
 
 site:
   template: book-theme
