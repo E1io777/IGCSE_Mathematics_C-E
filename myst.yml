@@ -3,7 +3,7 @@ version: 1
 
 project:
   id: 5eae42df-5f18-4619-b9d9-8a56f17a08be
-  title: JupyterBook v2 + JupyterLite Template
+  title: ELIO IGCSE Mathematics Core and Extended
   description: A template for publishing notebook-based docs using Jupyter Book v2 (MyST) with JupyterLite support
   keywords: [jupyter, jupyterbook, mystmd, jupyterlite, template, pyodide]
   authors:
