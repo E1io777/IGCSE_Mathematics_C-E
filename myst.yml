@@ -3,12 +3,12 @@ version: 1
 
 project:
   id: 5eae42df-5f18-4619-b9d9-8a56f17a08be
-  title: ELIO IGCSE Mathematics Core and Extended
-  description: A template for publishing notebook-based docs using Jupyter Book v2 (MyST) with JupyterLite support
+  title: Digital IGCSE Mathematics Core and Extended
+  description: An interactive IGCSE Mathematics textbook with notes, worked examples, practice, revision, and examination-style exercises.
   keywords: [jupyter, jupyterbook, mystmd, jupyterlite, template, pyodide]
   authors:
-    - name: Chandravesh Chaudhari
-      github: chandraveshchaudhari
+    - name: Hein Htet Aung (Elio)
+      github: E1io777
   github: https://github.com/chandraveshchaudhari/jupyterbook2_with_lite_template
   license:
     code: MIT
@@ -37,15 +37,31 @@ project:
   
   toc:
     - file: intro.md
-    - title: Getting Started
-      children:
-        - file: notebooks/adding_contents.ipynb
 
-    - title: Features & Showcase
-      children:
-        - file: notebooks/features.ipynb
-        - file: notebooks/section_markdown_page.md
-        - file: notebooks/pyodide_example.md
+  - title: Chapter 1 — Number
+    children:
+      - title: 1.1 Arithmetic
+        file: chapter1/1-1-arithmetic.md
+      - title: 1.2 Negative Numbers
+        file: chapter1/1-2-negative-numbers.md
+      - title: 1.3 Number Facts
+        file: chapter1/1-3-number-facts.md
+      - title: 1.4 Sequences
+        file: chapter1/1-4-sequences.md
+      - title: 1.5 Approximations and Estimation
+        file: chapter1/1-5-approximations-estimation.md
+      - title: 1.6 Indices
+        file: chapter1/1-6-indices.md
+      - title: 1.7 Standard Form
+        file: chapter1/1-7-standard-form.md
+      - title: 1.8 Surds
+        file: chapter1/1-8-surds.md
+      - title: 1.9 Calculator
+        file: chapter1/1-9-calculator.md
+      - title: Revision Exercise
+        file: chapter1/revision-exercise.md
+      - title: Examination-Style Exercise
+        file: chapter1/examination-style-exercise.md
 
 site:
   template: book-theme
