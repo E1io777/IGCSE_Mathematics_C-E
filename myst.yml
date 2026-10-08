@@ -68,10 +68,8 @@ site:
   options:
     logo: media/images/banner_image.png
     favicon: media/images/banner_image.png
-    folders: true          # generates clean /page/ URLs
-    # logo_dark: media/images/banner_image_dark.png
-    style: media/custom.css   # custom fonts, layout, fullscreen, scrollable output
-    # outline_maxdepth: 2          # right-side outline depth (keeps it concise)
-    # hide_outline: true         # un-comment to fully hide the right outline
-    # hide_authors: true
-    # hide_title_block: true
+    folders: true
+    style: media/custom.css
+    scripts:
+      - _static/pyodide-runner.js
+      - _static/pyodide-transform.js
