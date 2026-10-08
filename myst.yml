@@ -41,7 +41,7 @@ project:
     - title: Chapter 1 — Number
       children:
         - title: 1.1 Arithmetic
-          file: chapter1/1-1-arithmetic.md
+          file: chapter1/1.1 - Arithmetic.md
         - title: 1.2 Negative Numbers
           file: chapter1/1-2-negative-numbers.md
         - title: 1.3 Number Facts
