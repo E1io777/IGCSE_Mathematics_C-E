@@ -21,7 +21,7 @@ project:
     #   repo: chandraveshchaudhari/jupyterbook2_with_lite_template
     #   ref: main
   # Update with your own GitHub username and repo name.
-  binder: https://mybinder.org/v2/gh/chandraveshchaudhari/jupyterbook2_with_lite_template/HEAD
+  #binder: https://mybinder.org/v2/gh/chandraveshchaudhari/jupyterbook2_with_lite_template/HEAD
 
   # ---------------------------------------------------------------------------
   # Banner image — referenced from project root (myst.yml location)
