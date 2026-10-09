@@ -17,7 +17,7 @@ project:
 
   jupyter:
     lite: true
-    # binder:                                    # configures the ⚡ power button's Binder backend
+    binder: null                                 # configures the ⚡ power button's Binder backend
     #   repo: chandraveshchaudhari/jupyterbook2_with_lite_template
     #   ref: main
   # Update with your own GitHub username and repo name.
