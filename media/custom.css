@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,1,14..32,100..900&display=swap");
 
 body {
   font-family: "Inter", sans-serif;
@@ -10,4 +10,57 @@ body {
 pre,
 code {
   letter-spacing: normal;
+}
+
+.math-quiz {
+  margin: 1rem 0 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--pst-color-border, #d8dce2);
+  border-radius: 0.75rem;
+}
+
+.math-quiz .quiz-question {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.math-quiz .quiz-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.math-quiz .math-quiz-answer {
+  min-width: 3.25rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--pst-color-border, #b9c0ca);
+  border-radius: 0.5rem;
+  background: var(--pst-color-background, #fff);
+  color: var(--pst-color-text-base, #20242a);
+  font: inherit;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.math-quiz .math-quiz-answer:hover {
+  border-color: var(--pst-color-primary, #4263eb);
+}
+
+.math-quiz .math-quiz-answer[aria-pressed="true"] {
+  border-color: var(--pst-color-primary, #4263eb);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--pst-color-primary, #4263eb) 20%, transparent);
+}
+
+.math-quiz .quiz-feedback {
+  min-height: 1.5em;
+  margin-top: 0.8rem;
+  font-weight: 600;
+}
+
+.math-quiz .quiz-feedback.is-correct {
+  color: #16803c;
+}
+
+.math-quiz .quiz-feedback.is-incorrect {
+  color: #b42318;
 }
