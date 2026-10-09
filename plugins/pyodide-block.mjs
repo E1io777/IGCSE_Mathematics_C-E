@@ -1,33 +1,12 @@
 /**
- * pyodide-block.mjs — MyST v2 JavaScript Plugin
+ * MyST v2 JavaScript plugin.
  *
- * Provides a `pyodide-cell` directive that produces a structured div
- * containing a hidden code block. The frontend `pyodide-transform.js`
- * finds these divs at runtime and replaces them with interactive UI.
- *
- * Usage in myst.yml:
- *   project:
- *     plugins:
- *       - plugins/pyodide-block.mjs
- *
- * Markdown usage (directive):
- *   :::{pyodide-cell}
- *   :id: my-cell
- *   print("Hello Pyodide")
- *   :::
+ * Directives:
+ * - pyodide-cell: embeds a Python code cell for the existing frontend transform.
+ * - math-quiz: creates structured quiz markup that the frontend turns into
+ *   real answer buttons. Structured MyST nodes are used instead of raw HTML.
  */
 
-/**
- * Directive: creates a div.pyodide-cell wrapping a code block.
- *
- * MyST v2 strips data-* attributes from raw HTML nodes, so we embed
- * the source code as a child `code` node inside the div. The cell ID
- * is stored as the div's `identifier` property.
- *
- * The frontend JS (`pyodide-transform.js`) finds divs with class
- * `pyodide-cell`, extracts code from the child `<pre><code>`, and
- * builds the interactive editor + run button.
- */
 const pyodideCellDirective = {
   name: 'pyodide-cell',
   doc: 'Embed an interactive Pyodide Python cell.',
@@ -44,9 +23,6 @@ const pyodideCellDirective = {
       `pyodide-${Math.random().toString(36).slice(2, 9)}`;
     const code = data.body ?? '';
 
-    // Return a div containing a code block.
-    // The div gets class="pyodide-cell" and the code node carries the source.
-    // The identifier field survives as a data attribute or HTML id.
     return [
       {
         type: 'div',
@@ -64,9 +40,57 @@ const pyodideCellDirective = {
   },
 };
 
-const plugin = {
-  name: 'Pyodide Interactive Cells',
-  directives: [pyodideCellDirective],
+const mathQuizDirective = {
+  name: 'math-quiz',
+  doc: 'Create a multiple-choice maths question with instant feedback.',
+  options: {
+    question: { type: String, doc: 'Question shown to the student' },
+    choices: { type: String, doc: 'Comma-separated answer choices' },
+    correct: { type: Number, doc: 'Zero-based index of the correct choice' },
+  },
+  run(data) {
+    const question = data.options?.question ?? 'Choose the correct answer.';
+    const choices = (data.options?.choices ?? '')
+      .split(',')
+      .map((choice) => choice.trim())
+      .filter(Boolean);
+    const correct = Number(data.options?.correct ?? 0);
+    const safeCorrect = Number.isInteger(correct) && correct >= 0 && correct < choices.length
+      ? correct
+      : 0;
+
+    return [
+      {
+        type: 'div',
+        class: `math-quiz math-quiz-correct-${safeCorrect}`,
+        identifier: data.options?.id ?? `math-quiz-${Math.random().toString(36).slice(2, 9)}`,
+        children: [
+          {
+            type: 'div',
+            class: 'quiz-question',
+            children: [{ type: 'paragraph', children: [{ type: 'text', value: question }] }],
+          },
+          {
+            type: 'div',
+            class: 'quiz-choices',
+            children: choices.map((choice, index) => ({
+              type: 'div',
+              class: `quiz-choice quiz-choice-${index}`,
+              children: [{ type: 'paragraph', children: [{ type: 'text', value: choice }] }],
+            })),
+          },
+          {
+            type: 'div',
+            class: 'quiz-feedback',
+            children: [],
+          },
+        ],
+      },
+    ];
+  },
 };
 
-export default plugin;
+export default {
+  name: 'Interactive Learning Blocks',
+  directives: [pyodideCellDirective, mathQuizDirective],
+};
