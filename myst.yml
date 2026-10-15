@@ -36,9 +36,10 @@ project:
   
   
   toc:
-    - file: intro.md
+  - file: intro.md
 
-    - title: Chapter 1 — Number
+  - title: Chapter 1 — Number
+    file: chapter1/index.md
       children:
         - title: 1.1 Arithmetic
           file: chapter1/1.1 - Arithmetic.md
