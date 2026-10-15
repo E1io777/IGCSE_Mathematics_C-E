@@ -64,3 +64,35 @@ code {
 .math-quiz .quiz-feedback.is-incorrect {
   color: #b42318;
 }
+
+
+.chapter-dropdown-toggle {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.chapter-dropdown-toggle:hover {
+  opacity: 0.7;
+}
+
+.chapter-dropdown-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.chapter-dropdown-toggle[aria-expanded="true"] {
+  transform: rotate(0deg);
+}
+
+.chapter-dropdown-toggle[aria-expanded="false"] {
+  transform: rotate(0deg);
+}
+
+.chapter-dropdown-toggle + ul[hidden],
+.chapter-dropdown-toggle + ol[hidden] {
+  display: none !important;
+}
