@@ -31,7 +31,7 @@ project:
         - title: 1.1 Arithmetic
           file: chapter1/1.1 - Arithmetic.md
         - title: 1.2 Negative Numbers
-          file: chapter1/1-2-negative-numbers.md
+          file: chapter1/1.2 - Negative Numbers.md
         - title: 1.3 Number Facts
           file: chapter1/1-3-number-facts.md
         - title: 1.4 Sequences
