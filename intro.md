@@ -1,30 +1,31 @@
-# IGCSE Mathematics
+# IGCSE Mathematics: Core and Extended
 
-Welcome to this interactive IGCSE Mathematics textbook.
+Welcome to your **IGCSE Mathematics revision and practice guide**.
 
-This book is designed to help you build a strong understanding of mathematics through clear explanations, worked examples, interactive learning, practice, and examination-style questions.
+This book is designed to help you prepare for your IGCSE Mathematics examinations by strengthening your understanding of key mathematical concepts, reviewing essential skills, and practising the types of questions you may encounter in your exams.
 
-## Chapter 1 — Number
+## What will you find in this guide?
 
-In this chapter, we will explore the following topics:
+Each topic provides a structured way to revise and practise mathematics through:
 
-- **1.1 Arithmetic**
-- **1.2 Negative Numbers**
-- **1.3 Number Facts**
-- **1.4 Sequences**
-- **1.5 Approximations and Estimation**
-- **1.6 Indices**
-- **1.7 Standard Form**
-- **1.8 Surds**
-- **1.9 Calculator**
+- **Clear explanations** to help you understand important mathematical concepts and methods.
+- **Worked examples** that demonstrate solutions step by step.
+- **Practice questions** to help you apply what you have learned.
+- **Revision exercises** to reinforce your understanding of each chapter.
+- **Examination-style questions** to help you develop confidence in solving exam-related problems.
 
-After completing the chapter, you can test your understanding with:
+## How to use this book
 
-- **Revision Exercise**
-- **Examination-Style Exercise**
+Work through each topic at your own pace. Begin by reviewing the key concepts, study the worked examples carefully, and then attempt the practice questions independently.
 
-### How to use this book
+When you finish a chapter, complete the revision and examination-style exercises to identify what you understand well and which areas need further practice.
 
-For each topic, you will learn the key ideas, study worked examples, explore mathematical concepts, and practise what you have learned.
+If you make a mistake, do not simply memorise the correct answer. Take time to understand your error, review the relevant method, and try a similar question again.
 
-The aim is not simply to get the answer, but to develop **accuracy, understanding, and confidence** in mathematics.
+## Your goal
+
+The aim of this guide is to help you become a more confident and independent mathematics learner. Focus on **accuracy, understanding, and consistent practice** rather than rushing to finish questions.
+
+Remember, preparation is not just about getting the right answer. It is about understanding why the method works and knowing how to apply it when facing an unfamiliar question.
+
+**Revise carefully. Practise consistently. Enter your IGCSE examinations with confidence.**
