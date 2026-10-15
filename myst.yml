@@ -62,6 +62,11 @@ project:
           file: chapter1/revision-exercise.md
         - title: Examination-Style Exercise
           file: chapter1/examination-style-exercise.md
+          
+    - title: Chapter 2 — Algebra
+      children:
+        - title: 2.1 Algebraic Expressions
+          file: chapter2/2.1 - Algebraic Expressions.md
 
 site:
   template: book-theme
