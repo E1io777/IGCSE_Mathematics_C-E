@@ -1,41 +1,29 @@
-# See docs at: https://mystmd.org/guide/frontmatter
+
 version: 1
 
 project:
   id: 5eae42df-5f18-4619-b9d9-8a56f17a08be
   title: Digital IGCSE Mathematics Core and Extended
   description: An interactive IGCSE Mathematics textbook with notes, worked examples, practice, revision, and examination-style exercises.
-  keywords: [jupyter, jupyterbook, mystmd, jupyterlite, template, pyodide]
+  keywords: [jupyter, jupyterbook, mystmd, jupyterlite, pyodide]
   authors:
     - name: Hein Htet Aung (Elio)
       github: E1io777
-  github: https://github.com/chandraveshchaudhari/jupyterbook2_with_lite_template
+  github: https://github.com/E1io777/IGCSE_Mathematics_C-E
   license:
     code: MIT
     content: CC-BY-4.0
-  # plugins: (disabled) - enable only after installing required Node dependencies
 
   jupyter:
     lite: true
-    binder: null                                 # configures the ⚡ power button's Binder backend
-    #   repo: chandraveshchaudhari/jupyterbook2_with_lite_template
-    #   ref: main
-  # Update with your own GitHub username and repo name.
-  #binder: https://mybinder.org/v2/gh/chandraveshchaudhari/jupyterbook2_with_lite_template/HEAD
+    binder: null
 
-  # ---------------------------------------------------------------------------
-  # Banner image — referenced from project root (myst.yml location)
-  # ---------------------------------------------------------------------------
   banner: media/images/banner_image.png
 
-  # ---------------------------------------------------------------------------
-  # Table of Contents — controls site navigation
-  # ---------------------------------------------------------------------------
   plugins:
     - plugins/pyodide-block.mjs
-  
-  
-toc:
+
+  toc:
     - file: intro.md
 
     - title: Chapter 1 — Number
@@ -62,7 +50,7 @@ toc:
           file: chapter1/revision-exercise.md
         - title: Examination-Style Exercise
           file: chapter1/examination-style-exercise.md
-          
+
     - title: Chapter 2 — Algebra
       children:
         - title: 2.1 Algebraic Expressions
