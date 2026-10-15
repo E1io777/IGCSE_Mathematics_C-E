@@ -1,41 +1,54 @@
 
-function setupSidebarDropdowns() {
-  const sidebar = document.querySelector(
-    'aside, nav[aria-label*="sidebar" i]'
-  );
-
-  if (!sidebar) return;
-
-  sidebar.querySelectorAll('li').forEach((item) => {
-    const nestedList = Array.from(item.children).find(
-      (child) => child.tagName === 'UL' || child.tagName === 'OL'
+(() => {
+  function setupChapterDropdowns() {
+    const sidebar = document.querySelector(
+      'nav.toc, nav[aria-label="Table of Contents"], .bd-sidebar-primary, aside.sidebar'
     );
 
-    if (!nestedList || item.querySelector(':scope > button')) return;
+    if (!sidebar) return;
 
-    const link = Array.from(item.children).find(
-      (child) => child.tagName === 'A'
-    );
+    sidebar.querySelectorAll('li').forEach((item) => {
+      const childList = Array.from(item.children).find(
+        (el) => el.matches('ul, ol')
+      );
 
-    if (!link) return;
+      if (!childList) return;
 
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.textContent = '›';
-    button.setAttribute('aria-label', 'Toggle ' + link.textContent.trim());
-    button.setAttribute('aria-expanded', 'false');
+      const link = Array.from(item.children).find(
+        (el) => el.matches('a')
+      );
 
-    nestedList.hidden = true;
+      if (!link) return;
 
-    button.addEventListener('click', () => {
-      const isOpen = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', String(!isOpen));
-      nestedList.hidden = isOpen;
-      button.textContent = isOpen ? '›' : '⌄';
+      if (item.dataset.dropdownReady === 'true') return;
+      item.dataset.dropdownReady = 'true';
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'chapter-dropdown-toggle';
+      button.textContent = '›';
+      button.setAttribute('aria-label', 'Expand ' + link.textContent.trim());
+      button.setAttribute('aria-expanded', 'false');
+
+      childList.hidden = true;
+      item.insertBefore(button, childList);
+
+      button.addEventListener('click', () => {
+        const open = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!open));
+        button.textContent = open ? '›' : '⌄';
+        button.setAttribute(
+          'aria-label',
+          (open ? 'Expand ' : 'Collapse ') + link.textContent.trim()
+        );
+        childList.hidden = open;
+      });
     });
+  }
 
-    item.insertBefore(button, nestedList);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', setupSidebarDropdowns);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupChapterDropdowns);
+  } else {
+    setupChapterDropdowns();
+  }
+})();
