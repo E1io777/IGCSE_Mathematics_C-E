@@ -78,4 +78,3 @@ site:
     scripts:
       - _static/pyodide-runner.js
       - _static/pyodide-transform.js
-      - _static/sidebar-dropdown.js
