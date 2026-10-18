@@ -60,7 +60,7 @@ site:
   template: book-theme
   options:
     logo: media/images/banner_image.png
-    favicon: media/images/banner_image.png
+    favicon: media/images/elio math banner.png
     folders: true
     style: media/custom.css
     scripts:
