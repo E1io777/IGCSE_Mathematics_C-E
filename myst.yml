@@ -59,7 +59,7 @@ project:
 site:
   template: book-theme
   options:
-    logo: media/images/elio math logo.png
+    logo: media/images/elio math banner.png
     favicon: media/images/elio math logo.png
     folders: true
     style: media/custom.css
