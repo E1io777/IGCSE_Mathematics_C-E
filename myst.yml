@@ -33,7 +33,7 @@ project:
         - title: 1.2 Negative Numbers
           file: chapter1/1.2 - Negative Numbers.md
         - title: 1.3 Number Facts
-          file: chapter1/1-3-number-facts.md
+          file: chapter1/1.3 - Numbers Fact.md
         - title: 1.4 Sequences
           file: chapter1/1-4-sequences.md
         - title: 1.5 Approximations and Estimation
